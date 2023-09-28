@@ -9,6 +9,6 @@ Danilo Boechat Seufitelli
 * Henrique Grissi Cardoso Soeiro de Carvalho
 * Laura Enísia Rodrigues Melo
 
-## 🚘 Sistema de Moeda Estudantil
+## 🪙 Sistema de Moeda Estudantil
 
 ## Histórias de Usuários 
