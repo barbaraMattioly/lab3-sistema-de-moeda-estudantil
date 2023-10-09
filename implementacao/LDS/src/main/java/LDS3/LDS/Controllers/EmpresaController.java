@@ -5,6 +5,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,16 +17,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import LDS3.LDS.Model.EmpresaModel;
 import LDS3.LDS.Repository.EmpresaRepository;
+import LDS3.LDS.Request.EmpresaRequest;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("empresa")
+@CrossOrigin(origins = "http://localhost:5173")
 public class EmpresaController {
     @Autowired
     private EmpresaRepository empresaRepository;
 
     @PostMapping("/cadastrar")
-    public ResponseEntity<?> cadastrar(@RequestBody @Valid EmpresaRepository empresaRequest){
+    public ResponseEntity<?> cadastrar(@RequestBody @Valid EmpresaRequest empresaRequest){
         EmpresaModel empresaModel = new EmpresaModel();
         BeanUtils.copyProperties(empresaRequest, empresaModel);
 

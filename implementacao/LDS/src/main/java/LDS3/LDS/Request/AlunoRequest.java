@@ -8,7 +8,7 @@ public record AlunoRequest(
                 @NotBlank String rg,
                 //@NotBlank String login,
                 @NotBlank String endereco,
-                @NotBlank String email,
+                @NotBlank String login,
                 @NotBlank String senha,
                 @NotBlank String curso,
                 @NotBlank String instituicao
