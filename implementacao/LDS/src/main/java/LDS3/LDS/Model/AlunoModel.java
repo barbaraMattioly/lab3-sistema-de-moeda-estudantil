@@ -24,7 +24,7 @@ public class AlunoModel {
     private String endereco;
 
     //private InstituicaoEnsino instituicaoEnsino;
-    
+    private String senha;
     private String curso;
     private int saldoMoedas;
 
@@ -90,5 +90,11 @@ public class AlunoModel {
 
     public void setSaldoMoedas(int saldoMoedas) {
         this.saldoMoedas = saldoMoedas;
+    }
+    public String getSenha(){
+        return senha;
+    }
+    public void setSenha(String senha){
+        this.senha = senha;
     }
 }
