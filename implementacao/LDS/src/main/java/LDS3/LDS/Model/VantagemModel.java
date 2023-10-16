@@ -40,7 +40,7 @@ public class VantagemModel {
     public String getDescricao(){
         return descricao;
     }
-    public void setEmpresa(String descricao){
+    public void setDescricao(String descricao){
         this.descricao = descricao;
     }
 

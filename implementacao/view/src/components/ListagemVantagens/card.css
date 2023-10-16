@@ -1,5 +1,5 @@
 .vantagem-card{
-    border: 5px solid;
+    border: 2px solid;
     border-color: black !important;
     background-color: white;
     color: black;
@@ -8,4 +8,11 @@
 img{
     height: 250px;
     width:300px;
+}
+p{
+    text-transform: capitalize;
+}
+h2{
+    text-transform: uppercase;
+    text-align: center;
 }
