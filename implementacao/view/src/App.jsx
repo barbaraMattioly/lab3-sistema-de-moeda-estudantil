@@ -4,8 +4,8 @@ import  {CadastroAluno}  from './components/cadastrarAluno';
 import  {CadastroEmpresa}  from './components/cadastrarEmpresa';
 import { Login } from './components/login';
 import{Home} from './components/home';
-import { ListaDeVantagens } from './components/ListagemVantagens/ListaDeVantagens.jsx';
 import { CadastroVantagem } from './components/cadastrarVantagem';
+import { ListaDeVantagens } from './components/ListagemVantagem';
 
 function App() {
   return (

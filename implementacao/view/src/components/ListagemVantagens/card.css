@@ -1,0 +1,7 @@
+.vantagem-card{
+    border: 5px solid;
+    border-color: black !important;
+    background-color: white;
+    color: black;
+    padding: 10px;
+}
