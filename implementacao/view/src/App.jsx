@@ -6,7 +6,7 @@ import { Login } from './components/login';
 import{Home} from './components/home';
 import { CadastroVantagem } from './components/cadastrarVantagem';
 import { ListaDeVantagens } from './components/ListagemVantagem';
-
+import { Menu } from './components/menu';
 function App() {
   return (
     <BrowserRouter>
@@ -17,6 +17,7 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/home" element={<Home/>}/>
         <Route path="/vantagens" element={<ListaDeVantagens/>}/>
+        <Route path="/teste" element={<Menu/>}/>
         <Route path="/vantagem/cadastro" element={<CadastroVantagem/>}/>
       </Routes>
     </BrowserRouter>
