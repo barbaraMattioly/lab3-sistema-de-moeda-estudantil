@@ -15,24 +15,15 @@ export const Login = () => {
     const handleClick = async (e) => {
         e.preventDefault();
         const user ={
-            login: email, 
+            email, 
             senha: password,
         }
 
         try{
+            console.log(user)
             const response = await useApi.post('usuario/login', user);
             const tipoCadastro = response.data.tipoCadastro;
-            if(tipoCadastro){
-                localStorage.setItem("tipoCadastro",tipoCadastro);
-                if(tipoCadastro === 'Aluno'){
-                    localStorage.setItem("id", response.data.cliente.id);
-                    navigate('/home')
-                }
-                if(tipoCadastro === 'Empresa'){
-                    localStorage.setItem("id", response.data.agente.id);
-                    navigate('/home')
-                }
-            }
+            navigate("/")
           }catch(error){
             alert('Erro ao efetuar login! Verifique os dados')
             console.error('Erro:', error);

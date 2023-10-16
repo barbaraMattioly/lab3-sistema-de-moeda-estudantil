@@ -6,6 +6,5 @@ import jakarta.validation.constraints.NotNull;
 public record EnderecoRequest(
         @NotBlank String rua,
         @NotBlank String bairro,
-        @NotNull int numero,
-        @NotBlank String complemento) {
+        @NotNull int numero) {
 }

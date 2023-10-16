@@ -11,8 +11,7 @@ public record AlunoRequest(
                 @NotNull EnderecoRequest endereco,
                 @NotBlank String email,
                 @NotBlank String senha,
-                @NotBlank String curso,
-                @NotBlank String instituicao
+                @NotBlank String curso
                 ) {
     
 }

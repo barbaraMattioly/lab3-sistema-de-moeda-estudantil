@@ -20,7 +20,7 @@ export const CadastroEmpresa = () => {
     const user = {
       nome,
       cnpj,
-      login: email,
+      email,
       senha,
     };
     console.log(user);

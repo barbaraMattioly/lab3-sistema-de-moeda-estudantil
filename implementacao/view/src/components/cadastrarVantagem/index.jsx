@@ -14,26 +14,24 @@ export const CadastroVantagem = () => {
   const [descricao, setDescricao] = useState('');
 
   //const empresas = await useApi.post('empresas');
-  const empresas = [
-    { id: 1 , nome:"empresa fake1", vantagens: "massagem" },
-    { id: 2 , nome:"empresa fake2", vantagens: "comidinha" },
-    { id: 3 , nome:"empresa fake3", vantagens: "beber agua" },
-    { id: 4 , nome:"empresa fake4", vantagens: "um beijo" },
-  ]
 
+  // options do select de empresa
   const handleClick = async (e) => {
     e.preventDefault();
 
+    const idEmpresa = 1;
+
     const vantagem = {
       idEmpresa,
-      valor,
+      valor: Number(valor),
       descricao,
     };
+    console.log(vantagem);
 
     try{
       await useApi.post('vantagem/cadastrar', vantagem);
       alert('Vantagem cadastrada com sucesso!');
-      navigate('/vantagens');
+      navigate('/');
     }catch(error){
       console.error('Erro:', error);
     }
@@ -77,23 +75,6 @@ export const CadastroVantagem = () => {
                     value={valor}
                     onChange={(e) => setValor(e.target.value)}
                   />
-              </Grid>
-
-              <Grid item xs={12} sm={12}>
-                  <Select
-                      required
-                      fullWidth
-                      name="idEmpresa"
-                      label="Empresa"
-                      size="small"
-                      id="tipo"
-                      value={idEmpresa}
-                      onChange={(e) => setIdEmpresa(e.target.value)}
-                  >
-                    {empresas.map((empresa, index) => (
-                      <MenuItem key={index} value={empresa.id}>{empresa.nome}</MenuItem>
-                     ))}
-                  </Select>
               </Grid>
             </Grid>
             <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} onClick={handleClick} >

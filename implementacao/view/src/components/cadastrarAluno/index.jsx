@@ -25,16 +25,21 @@ export const CadastroAluno = () => {
     const handleClick = async (e) => {
         e.preventDefault();
 
-        const endereco = `Rua: ${rua}, Nº ${numero}, Bairro: ${bairro}, Cidade: ${cidade}, Estado: ${estado}`;
+        const endereco = {
+            rua,
+            bairro,
+            numero: Number(numero)
+        };
+        const idInstituicao = 1;
         const user = {
             nome,
             cpf,
             rg,
             endereco,
-            login: email,
+            email,
             senha,
             curso, 
-            instituicao
+            idInstituicao
         };
         console.log(user);
         
