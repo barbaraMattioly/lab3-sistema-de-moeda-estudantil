@@ -3,10 +3,10 @@ import axios from 'axios';
 import { VantagemCard } from '../ListagemVantagens';
 import './lista.css'
 export const ListaDeVantagens = () => {
-  // const [vantagens, setVantagens] = useState([]);
+ // const [vantagens, setVantagens] = useState([]);
 
-  // useEffect(() => {
-  //   axios.get('https:localhost:8080/vantagens').then((response) => {
+  // useEffect(async () => {
+  //   await axios.get('https:localhost:8080/vantagem/listar').then((response) => {
   //     setVantagens(response.data);
   //   });
   // }, []);
