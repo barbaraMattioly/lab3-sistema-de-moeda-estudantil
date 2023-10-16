@@ -5,6 +5,7 @@ import  {CadastroEmpresa}  from './components/cadastrarEmpresa';
 import { Login } from './components/login';
 import{Home} from './components/home';
 import { ListaDeVantagens } from './components/ListagemVantagens/ListaDeVantagens.jsx';
+import { CadastroVantagem } from './components/cadastrarVantagem';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/home" element={<Home/>}/>
         <Route path="/vantagens" element={<ListaDeVantagens/>}/>
+        <Route path="/vantagem/cadastro" element={<CadastroVantagem/>}/>
       </Routes>
     </BrowserRouter>
   )
