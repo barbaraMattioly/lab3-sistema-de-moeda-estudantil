@@ -5,26 +5,26 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Aluno")
-public class AlunoModel {
+@Table(name = "ALUNO")
+public class AlunoModel extends UsuarioModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
-    private String login;
 
     @Column(unique = true)
     private String cpf;
     private String rg;
 
-    private String endereco;
+    @OneToOne
+    @JoinColumn(name = "idInstituicao", referencedColumnName = "id")
+    private InstituicaoModel instituicao;
 
-    //private InstituicaoEnsino instituicaoEnsino;
-    private String senha;
     private String curso;
     private int saldoMoedas;
 
@@ -34,22 +34,6 @@ public class AlunoModel {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
     }
 
     public String getCpf() {
@@ -68,12 +52,12 @@ public class AlunoModel {
         this.rg = rg;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public InstituicaoModel getInstituicao() {
+        return this.instituicao;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setInstituicao(InstituicaoModel instituicao) {
+        this.instituicao = instituicao;
     }
 
     public String getCurso() {
@@ -90,11 +74,5 @@ public class AlunoModel {
 
     public void setSaldoMoedas(int saldoMoedas) {
         this.saldoMoedas = saldoMoedas;
-    }
-    public String getSenha(){
-        return senha;
-    }
-    public void setSenha(String senha){
-        this.senha = senha;
     }
 }
