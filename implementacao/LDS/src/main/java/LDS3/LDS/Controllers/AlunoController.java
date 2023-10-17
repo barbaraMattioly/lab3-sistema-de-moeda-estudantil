@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import LDS3.LDS.Model.AlunoModel;
+import LDS3.LDS.Model.EnderecoModel;
 import LDS3.LDS.Repository.AlunoRepository;
+import LDS3.LDS.Repository.EnderecoRepository;
 import LDS3.LDS.Request.AlunoRequest;
 import jakarta.validation.Valid;
 
@@ -29,6 +31,9 @@ public class AlunoController {
     @Autowired
     private AlunoRepository alunoRepository;
 
+    @Autowired
+    private EnderecoRepository enderecoRepository;
+
     @PostMapping("/cadastrar")
     public ResponseEntity<?> cadastrar(@RequestBody @Valid AlunoRequest alunoRequest){
         AlunoModel alunoModel = new AlunoModel();
@@ -36,6 +41,11 @@ public class AlunoController {
 
         AlunoModel alunoCadastrado = alunoRepository.save(alunoModel);
         
+        EnderecoModel endereco = new EnderecoModel();
+        BeanUtils.copyProperties(alunoRequest.endereco(), endereco);
+        endereco.setAluno(alunoCadastrado);
+        enderecoRepository.save(endereco);
+
         return ResponseEntity.status(HttpStatus.CREATED).body(alunoCadastrado);
     }
 

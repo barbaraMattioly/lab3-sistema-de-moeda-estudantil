@@ -8,28 +8,38 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table (name = "EMPRESA")
-public class EmpresaModel extends UsuarioModel{
+@Table(name = "INSTITUICAO")
+public abstract class InstituicaoModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String nome;
 
     @Column(unique = true)
     private String cnpj;
 
-    public Long getId(){
+    public Long getId() {
         return id;
     }
-    public void setId(Long id){
+
+    public void setId(Long id) {
         this.id = id;
     }
-    public String getCnpj(){
-        return cnpj;
+
+    public String getNome() {
+        return nome;
     }
-    public void setCnpj(String cnpj){
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCnpj() {
+        return this.cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
     }
-
-
 }
