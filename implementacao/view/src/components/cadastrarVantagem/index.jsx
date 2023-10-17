@@ -21,14 +21,6 @@ export const CadastroVantagem = () => {
     { id: 4 , nome:"empresa fake4", vantagens: "um beijo" },
   ]
 
-  // options do select de empresa
-  const elementSelect = [];
-  empresas.forEach((empresa) => {
-    return (
-      elementSelect.push(<MenuItem key={empresa.id} value={empresa.id}>{empresa.nome}</MenuItem>)
-    );
-  })
-
   const handleClick = async (e) => {
     e.preventDefault();
 
@@ -98,7 +90,9 @@ export const CadastroVantagem = () => {
                       value={idEmpresa}
                       onChange={(e) => setIdEmpresa(e.target.value)}
                   >
-                    {elementSelect}
+                    {empresas.map((empresa, index) => (
+                      <MenuItem key={index} value={empresa.id}>{empresa.nome}</MenuItem>
+                     ))}
                   </Select>
               </Grid>
             </Grid>
