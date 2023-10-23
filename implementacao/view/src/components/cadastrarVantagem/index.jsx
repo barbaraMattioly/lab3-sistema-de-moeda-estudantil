@@ -1,6 +1,6 @@
 import { Box } from "@mui/system"
 import { Typography, Button, Grid, TextField, Select, MenuItem } from '@mui/material';
-import fotoDeFundo from '../../assets/vantagens.webp';
+import fotoDeFundo from '../../assets/task.jpg';
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useApi } from '../../hook/userApi';
@@ -45,10 +45,24 @@ export const CadastroVantagem = () => {
         <Box>
           <Box component="form" sx={{ my: 8, mx: 4, display: 'flex', flexDirection: 'column', alignItems: 'center', }} >
             <Typography variant="h4" fontWeight="fontWeightMedium" mb={3}>
-              Realize seu cadastro
+              Cadastre sua vantagem
             </Typography>
 
             <Grid container spacing={2}>
+            <Grid item xs={12} >
+                <TextField
+                    required
+                    name="nome"
+                    fullWidth
+                    type="text"
+                    label="Nome"
+                    size="small"
+                    autoFocus
+                    value={descricao}
+                    onChange={(e) => setDescricao(e.target.value)}
+                  />
+              </Grid>
+
               <Grid item xs={12} >
                 <TextField
                     required
@@ -74,6 +88,20 @@ export const CadastroVantagem = () => {
                     autoFocus
                     value={valor}
                     onChange={(e) => setValor(e.target.value)}
+                  />
+              </Grid>
+
+              <Grid item xs={12} >
+                <TextField
+                    required
+                    name="descricao"
+                    fullWidth
+                    type="text"
+                    label="Arquivo"
+                    size="small"
+                    autoFocus
+                    value={descricao}
+                    onChange={(e) => setDescricao(e.target.value)}
                   />
               </Grid>
             </Grid>
