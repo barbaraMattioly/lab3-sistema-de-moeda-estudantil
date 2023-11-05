@@ -4,7 +4,6 @@ import './lista.css'
 import { useApi } from '../../hook/userApi';
 import {Barra} from '../navBar/index';
 import { Typography, Box} from '@mui/material';
-import moedas from '../../assets/moedas.png'
 
 
 export const ListaDeVantagens = () => {
