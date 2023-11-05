@@ -7,6 +7,9 @@ import{Home} from './components/home';
 import { CadastroVantagem } from './components/cadastrarVantagem';
 import { ListaDeVantagens } from './components/ListagemVantagem';
 import { Menu } from './components/menu';
+
+
+
 function App() {
   return (
     <BrowserRouter>

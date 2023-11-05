@@ -1,17 +1,14 @@
-import { Box } from "@mui/system"
-import { Typography, Button, Grid, TextField, Select, MenuItem } from '@mui/material';
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
-import { useApi } from '../../hook/userApi';
-import { Menu } from "../menu";
+import { Typography} from '@mui/material';
+import {Barra} from '../navBar/index';
+
 
 export const Home = () => {
     return (
         <>
-        <Menu/>
-        <Typography variant="h5" fontWeight="fontWeightMedium" mb={3}>
-            Bem vindo! - Página ainda em criação!
-        </Typography>       
+        <Barra/>
+        <Typography variant="h6">
+          Acumule moedas e escolha seu prêmio como descontos, materiais escolares, livros ou voucher em restaurantes.
+        </Typography>
         </>
     );
 }

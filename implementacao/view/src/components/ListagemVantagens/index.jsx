@@ -11,8 +11,8 @@ export const VantagemCard = ({ titulo, descricao, custo, imagemUrl, empresa }) =
       <img src={fotoDeFundo} alt={titulo} />
       <h2>{titulo}</h2>
       <p>{descricao}</p>
-      <p>Custo: {custo} créditos</p>
-      <p>Nome da empresa: {empresa}</p>
+      <p>Moedas: {custo} 🪙</p>
+      <p>Empresa: {empresa}</p>
     </div>
   );
 };
