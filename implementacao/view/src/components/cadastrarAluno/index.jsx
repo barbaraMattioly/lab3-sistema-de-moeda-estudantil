@@ -221,7 +221,7 @@ export const CadastroAluno = () => {
                             </Grid>
 
                         </Grid>
-                        <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} onClick={handleClick} >
+                        <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2, backgroundColor: '#634f79', color: 'white', '&:hover': { backgroundColor: '#6c5d80' } }} onClick={handleClick} >
                             Cadastrar
                         </Button>
                     </Box>
@@ -242,7 +242,7 @@ export const CadastroAluno = () => {
                     Possui conta?
                 </Typography>
 
-                <Button type="submit" size="medium" variant="contained" sx={{ width: '100px', color: "white" }} onClick={handleClick2} >
+                <Button type="submit" size="medium" variant="contained" sx={{ width: '100px', backgroundColor: '#634f79', color: 'white', '&:hover': { backgroundColor: '#6c5d80' } }} onClick={handleClick2} >
                     Login
                 </Button>
             </Grid>

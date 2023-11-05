@@ -43,7 +43,7 @@ export const CadastroVantagem = () => {
 
       <Grid item xs={12} sm={8} md={5} elevation={6}>
         <Box>
-          <Box component="form" sx={{ my: 8, mx: 4, display: 'flex', flexDirection: 'column', alignItems: 'center', }} >
+          <Box component="form" sx={{ my: 8, mx: 4, display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '200px' }} >
             <Typography variant="h4" fontWeight="fontWeightMedium" mb={3}>
               Cadastre sua vantagem
             </Typography>
@@ -105,7 +105,7 @@ export const CadastroVantagem = () => {
                   />
               </Grid>
             </Grid>
-            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} onClick={handleClick} >
+            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2, backgroundColor: '#634f79', color: 'white', '&:hover': { backgroundColor: '#6c5d80' } }} onClick={handleClick} >
                 Cadastrar
             </Button>
           </Box>

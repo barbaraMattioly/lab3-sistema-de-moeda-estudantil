@@ -17,9 +17,15 @@ export const Barra = () => {
         navigate('/');
     }
 
-    const extratro = () => {
-      navigate('/home');
-  }
+    const extrato = () => {
+      navigate('/extrato');
+    }
+
+    const enviar = () => {
+      navigate('/enviar');
+    }
+
+
 
 
   return (
@@ -27,7 +33,8 @@ export const Barra = () => {
       <Toolbar>
         <img src={logo} className="logo" alt="logo" style={logoStyle}  />
         <Button color="inherit"  sx={{marginLeft: 'auto'}} onClick={vantagem} >Vantagens</Button>
-        <Button color="inherit"  onClick={extratro} >Extratro</Button>
+        <Button color="inherit"  onClick={extrato}> Extrato</Button>
+        <Button color="inherit"  onClick={enviar}> Enviar</Button>
       </Toolbar>
     </AppBar>
   );

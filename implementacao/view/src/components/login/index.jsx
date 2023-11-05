@@ -58,16 +58,16 @@ export const Login = () => {
                     Não possui conta?
                 </Typography>
                 
-                <Button type="submit" size="medium"  variant="contained" sx={{ width: '200px', marginBottom: '15px', color: "white" }} onClick={handleClick2} >
+                <Button type="submit" size="medium"  variant="contained" sx={{ width: '200px', marginBottom: '15px', backgroundColor: '#634f79', color: 'white', '&:hover': { backgroundColor: '#6c5d80' } }} onClick={handleClick2} >
                     cadastrar aluno
                 </Button>
-                <Button type="submit" size="medium"  variant="contained" sx={{ width: '200px',  color: "white" }} onClick={handleClick3} >
+                <Button type="submit" size="medium"  variant="contained" sx={{ width: '200px',  backgroundColor: '#634f79', color: 'white', '&:hover': { backgroundColor: '#6c5d80' }}} onClick={handleClick3} >
                     cadastrar empresa
                 </Button>                
             </Grid>
 
             <Grid item xs={12} sm={8} md={5} elevation={6}>
-                <Box sx={{ my: 8, mx: 4, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                <Box sx={{ my: 8, mx: 4, display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '250px'}}>
                 
                     <Typography variant="h4" fontWeight="fontWeightMedium" mb={3}>
                        Realize seu Login
@@ -103,7 +103,7 @@ export const Login = () => {
                         </Grid>
                         
                         <Grid item xs={12}>
-                            <Button xs={12} type="submit" fullWidth variant="contained" onClick={handleClick}>
+                            <Button xs={12} type="submit" fullWidth variant="contained" onClick={handleClick} sx={{ backgroundColor: '#634f79', color: 'white', '&:hover': { backgroundColor: '#6c5d80' }   }}>
                                 Login
                             </Button>
                         </Grid>
