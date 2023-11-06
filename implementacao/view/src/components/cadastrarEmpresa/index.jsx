@@ -46,7 +46,7 @@ export const CadastroEmpresa = () => {
 
       <Grid item xs={12} sm={8} md={5} elevation={6}>
         <Box>
-          <Box component="form" sx={{ my: 8, mx: 4, display: 'flex', flexDirection: 'column', alignItems: 'center', }} >
+          <Box component="form" sx={{ my: 8, mx: 4, display: 'flex', flexDirection: 'column', alignItems: 'center',  }} >
             <Typography variant="h4" fontWeight="fontWeightMedium" mb={3}>
               Realize seu cadastro
             </Typography>
@@ -105,7 +105,7 @@ export const CadastroEmpresa = () => {
                 />
               </Grid>
             </Grid>
-            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} onClick={handleClick} >
+            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2,backgroundColor: '#634f79', color: 'white', '&:hover': { backgroundColor: '#6c5d80' } }} onClick={handleClick} >
               Cadastrar
             </Button>
           </Box>
@@ -126,7 +126,7 @@ export const CadastroEmpresa = () => {
           Possui conta?
         </Typography>
 
-        <Button type="submit" size="medium" variant="contained" sx={{ width: '100px', color: "white" }} onClick={handleClick2} >
+        <Button type="submit" size="medium" variant="contained" sx={{ width: '100px', backgroundColor: '#634f79', color: 'white', '&:hover': { backgroundColor: '#6c5d80' } }} onClick={handleClick2} >
           Login
         </Button>
       </Grid>

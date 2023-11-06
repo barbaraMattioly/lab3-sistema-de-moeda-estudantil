@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { VantagemCard } from '../ListagemVantagens';
 import './lista.css'
 import { useApi } from '../../hook/userApi';
+import {Barra} from '../navBar/index';
+import { Typography, Box} from '@mui/material';
+
+
 export const ListaDeVantagens = () => {
  const [vantagens, setVantagens] = useState([]);
 
@@ -13,7 +16,7 @@ export const ListaDeVantagens = () => {
         setVantagens(vantagens);
         console.log(vantagens);
       } catch (error) {
-        console.error("Erro ao buscar imóveis:", error); //exibir em tela dps
+        console.error("Erro ao buscar vantagem:", error); 
       }
     };
     listaVantagens();
@@ -21,7 +24,18 @@ export const ListaDeVantagens = () => {
   
   return (
     <>
-    <div className="lista-de-vantagens">
+    <Barra/>
+    <Box alignItems="center"  sx={{ marginLeft: '100px', marginTop: '30px' }} >
+        <Typography variant="h4">
+          Troque suas moedas por uma vantagem!
+        </Typography>
+        <Typography variant="h6">
+          Acumule moedas e escolha seu prêmio como descontos, materiais escolares, livros ou voucher em restaurantes.
+        </Typography>
+    </Box>
+    
+    
+    <div className="lista-de-vantagens">      
       {vantagens.map((vantagem, index) => (
         <VantagemCard
           key={index}
