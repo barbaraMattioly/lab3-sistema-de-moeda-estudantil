@@ -21,6 +21,7 @@ export const CadastroVantagem = () => {
   const [valor, setValor] = useState("");
   const [descricao, setDescricao] = useState("");
   const [nome, setNome] = useState("");
+  const [base64Imagem, setBase64Imagem] = useState("");
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -32,8 +33,8 @@ export const CadastroVantagem = () => {
       valor: Number(valor),
       descricao,
       nome,
+      base64Imagem
     };
-    console.log(vantagem);
 
     try {
       await useApi.post("vantagem/cadastrar", vantagem);
@@ -51,7 +52,8 @@ export const CadastroVantagem = () => {
       acceptedFiles.forEach((file) => {
         const reader = new FileReader();
         reader.onload = () => {
-          console.log(reader.result);
+          const base64Image = reader.result.split(",")[1];
+          setBase64Imagem(base64Image);
         };
         reader.readAsDataURL(file);
       });

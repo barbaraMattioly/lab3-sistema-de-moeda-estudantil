@@ -23,6 +23,7 @@ public class VantagemModel {
     private String descricao;
     private double valor;
     private String nome;
+    private String urlImagem;
 
     public Long getId(){
         return id;
@@ -57,5 +58,12 @@ public class VantagemModel {
     }
     public void setNome(String nome){
         this.nome = nome;
+    }
+
+    public String getUrlImagem(){
+        return urlImagem;
+    }
+    public void setUrlImagem(String urlImagem){
+        this.urlImagem = urlImagem;
     }
 }

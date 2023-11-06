@@ -43,6 +43,7 @@ export const ListaDeVantagens = () => {
         <Grid item key={vantagem.id} xs={12} sm={6} md={4} lg={3}>
           <VantagemCard
             key={index}
+            imagemUrl={vantagem.urlImagem}
             titulo={vantagem.nome}
             descricao={vantagem.descricao}
             custo={vantagem.valor}

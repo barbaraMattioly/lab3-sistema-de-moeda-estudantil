@@ -1,5 +1,4 @@
 import React from 'react';
-import fotoDeFundo from '../../assets/vantagens.webp';
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material';
 
 export const VantagemCard = ({ titulo, descricao, custo, imagemUrl, empresa }) => {
@@ -11,7 +10,7 @@ export const VantagemCard = ({ titulo, descricao, custo, imagemUrl, empresa }) =
           <CardMedia
             component="img"
             height="180"
-            image={fotoDeFundo}
+            image={imagemUrl}
             alt="Descrição da imagem"
           />          
           <CardContent>

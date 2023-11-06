@@ -7,5 +7,6 @@ public record VantagemRequest(
     @NotNull Long idEmpresa,
     @NotNull double valor,
     @NotEmpty String descricao,
-    @NotEmpty String nome){
+    @NotEmpty String nome,
+    @NotEmpty String base64Imagem){
 }
