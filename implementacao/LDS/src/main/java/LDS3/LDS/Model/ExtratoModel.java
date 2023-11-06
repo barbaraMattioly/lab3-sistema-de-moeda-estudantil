@@ -16,11 +16,11 @@ public class ExtratoModel {
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "idAluno", referencedColumnName = "id")
+    @JoinColumn(name = "alunoId", referencedColumnName = "id")
     private AlunoModel aluno;
 
     @OneToOne
-    @JoinColumn(name = "idProfessor", referencedColumnName = "id")
+    @JoinColumn(name = "professorId", referencedColumnName = "id")
     private ProfessorModel professor;
 
     private double valor;

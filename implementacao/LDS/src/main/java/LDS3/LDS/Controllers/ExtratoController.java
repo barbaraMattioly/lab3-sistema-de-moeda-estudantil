@@ -19,12 +19,12 @@ public class ExtratoController {
     private ExtratoRepository extratoRepository;
 
     @GetMapping("/listarProfessor/{id}")
-    public Iterable<ExtratoModel> returnAllProfessor(@PathVariable Long idProfessor){
-        return extratoRepository.findById_Professor(idProfessor);
+    public Iterable<ExtratoModel> returnAllProfessor(@PathVariable Long id){
+        return extratoRepository.findByProfessor_Id(id);
     }
 
-    @GetMapping("/listarAluno")
-    public Iterable<ExtratoModel> returnAllAluno(@PathVariable Long idAluno){
-        return extratoRepository.findById_Aluno(idAluno);
+    @GetMapping("/listarAluno/{id}")
+    public Iterable<ExtratoModel> returnAllAluno(@PathVariable Long id){
+        return extratoRepository.findByAluno_Id(id);
     }
 }

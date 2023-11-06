@@ -15,7 +15,7 @@ public class AlunoModel extends UsuarioModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @Column(unique = true)
     private String cpf;

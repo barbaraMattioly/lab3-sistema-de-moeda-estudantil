@@ -13,13 +13,13 @@ public class InstituicaoModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
     private String nome;
 
     @Column(unique = true)
     private String cnpj;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 

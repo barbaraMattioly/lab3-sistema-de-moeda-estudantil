@@ -7,6 +7,6 @@ import LDS3.LDS.Model.ExtratoModel;
 
 @Repository
 public interface ExtratoRepository extends JpaRepository<ExtratoModel, Long>{
-    public Iterable<ExtratoModel> findById_Professor(Long idProfessor);
-    public Iterable<ExtratoModel> findById_Aluno(Long idAluno);
+    public Iterable<ExtratoModel> findByProfessor_Id(Long id);
+    public Iterable<ExtratoModel> findByAluno_Id(Long id);
 }
