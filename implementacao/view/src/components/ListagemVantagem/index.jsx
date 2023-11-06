@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { VantagemCard } from '../ListagemVantagens';
-import './lista.css'
 import { useApi } from '../../hook/userApi';
 import {Barra} from '../navBar/index';
-import { Typography, Box} from '@mui/material';
-
+import { Grid, Typography, Box} from '@mui/material';
 
 export const ListaDeVantagens = () => {
  const [vantagens, setVantagens] = useState([]);
@@ -34,18 +32,25 @@ export const ListaDeVantagens = () => {
         </Typography>
     </Box>
     
-    
-    <div className="lista-de-vantagens">      
+    <Grid 
+      container 
+      spacing={2}
+      justifyContent="center"
+      alignItems="center"
+      style={{ minHeight: '100vh' }}
+    >
       {vantagens.map((vantagem, index) => (
-        <VantagemCard
-          key={index}
-          titulo={vantagem.descricao}
-          descricao={vantagem.descricao}
-          custo={vantagem.valor}
-          empresa= {vantagem.empresa.nome}
-        />
+        <Grid item key={vantagem.id} xs={12} sm={6} md={4} lg={3}>
+          <VantagemCard
+            key={index}
+            titulo={vantagem.nome}
+            descricao={vantagem.descricao}
+            custo={vantagem.valor}
+            empresa={vantagem.empresa.nome}
+          />
+        </Grid>
       ))}
-    </div>
+    </Grid>
     </>
   );
 };

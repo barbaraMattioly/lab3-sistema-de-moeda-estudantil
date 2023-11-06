@@ -25,14 +25,16 @@ export const Barra = () => {
       navigate('/enviar');
     }
 
-
-
+    const cadastroVantagem = () => {
+      navigate('/vantagem/cadastro');
+    }
 
   return (
     <AppBar position="sticky" sx={{ backgroundColor: '#544d5d' }}>
       <Toolbar>
         <img src={logo} className="logo" alt="logo" style={logoStyle}  />
-        <Button color="inherit"  sx={{marginLeft: 'auto'}} onClick={vantagem} >Vantagens</Button>
+        <Button color="inherit"  sx={{marginLeft: 'auto'}} onClick={cadastroVantagem} >Cadastrar Vantagem</Button>
+        <Button color="inherit"  onClick={vantagem} >Vantagens</Button>
         <Button color="inherit"  onClick={extrato}> Extrato</Button>
         <Button color="inherit"  onClick={enviar}> Enviar</Button>
       </Toolbar>

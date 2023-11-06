@@ -9,7 +9,6 @@ import { ListaDeVantagens } from './components/ListagemVantagem';
 import { Menu } from './components/menu';
 import {Envio} from './components/EnvioMoeda';
 
-
 function App() {
   return (
     <BrowserRouter>

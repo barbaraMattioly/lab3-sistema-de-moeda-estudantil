@@ -22,6 +22,7 @@ public class VantagemModel {
 
     private String descricao;
     private double valor;
+    private String nome;
 
     public Long getId(){
         return id;
@@ -49,5 +50,12 @@ public class VantagemModel {
     }
     public void setValor(double valor){
         this.valor = valor;
+    }
+
+    public String getNome(){
+        return nome;
+    }
+    public void setNome(String nome){
+        this.nome = nome;
     }
 }
