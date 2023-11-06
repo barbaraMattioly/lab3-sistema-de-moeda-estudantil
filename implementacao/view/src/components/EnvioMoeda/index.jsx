@@ -1,36 +1,80 @@
 import { Typography, Box,  Select, FormControl, InputLabel, MenuItem, TextField, Grid, Button  } from '@mui/material';
 import {Barra} from '../navBar/index';
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-
+import React, { useState, useEffect } from 'react';
+import { useApi } from '../../hook/userApi';
 
 export const Envio = () => {
-    const alunos = ["Ana", "Bárbara", "Laura"]; 
-
     const navigate = useNavigate();
-    const [aluno, setAluno] = useState('');
+    const [aluno, setAluno] = useState(null);
+    const [idAluno, setIdAluno] = useState('');
     const [motivo, setMotivo] = useState('');
     const [quantidade, setQuantidade] = useState('');
 
+    const [alunos, setAlunos] = useState([]);
+    const [qtdMoedas, setQtdMoedas] = useState([]);
+
+    useEffect(() => {
+      const listarAlunos = async () => {
+        try {
+          const alunos = (await useApi.get('aluno/alunos')).data;
+          setAlunos(alunos);
+        } catch (error) {
+          console.error("Erro ao buscar alunos:", error); 
+        }
+      };
+
+      const buscarMoedasProfessor = async () => {
+        try {
+          const qtdMoedas = (await useApi.get(`professor/getQuantidadeMoedas/${1}`)).data;
+          setQtdMoedas(qtdMoedas);
+        } catch (error) {
+          console.error("Erro ao buscar alunos:", error); 
+        }
+      };
+
+      listarAlunos();
+      buscarMoedasProfessor();
+    }, []);
 
     const handleClick = async (e) => {
         e.preventDefault();
 
-        alert('moedas enviadas com sucesso!')
+        const doacao = {
+            idAluno: Number(idAluno),
+            idProfessor: 1,
+            valor: Number(quantidade),
+            descricao: motivo
+        };
+
+        try {
+            await useApi.post("doacao/cadastrar", doacao);
+
+            alert('moedas enviadas com sucesso!');
+            navigate('/vantagens')
+          } catch (error) {
+            console.error("Erro:", error);
+        }
     }
 
-
+    const handleChange = (e) => {
+        const selectedAlunoId = e.target.value;
+        const selectedAluno = alunos.find((a) => a.id === parseInt(selectedAlunoId, 10));
+        
+        setAluno(selectedAluno);
+        setIdAluno(selectedAlunoId);
+    };    
 
     return (
         <>
         <Barra/>
         <Box display="flex" flexDirection="column"  alignItems="center"  justifyContent="center" height="20vh">
             <Typography variant="h4"sx={{marginTop: '230px'}}>
-                Olá [colocar o nome do prof aq], selecione o estudante que você deseja beneficiar:
+                Olá, selecione o estudante que você deseja beneficiar:
             </Typography>
 
             <Typography variant="h5" sx={{marginTop: '40px', marginBottom: '50px'}} >
-                Você tem o total de [] 🪙
+                Você tem o total de {qtdMoedas} 🪙
             </Typography>
         </Box>
 
@@ -38,11 +82,11 @@ export const Envio = () => {
         
         <FormControl sx={{ minWidth: 500, margin: "auto" }} >
             <InputLabel >Selecione um aluno</InputLabel>
-            <Select value={aluno} onChange={(e) => setAluno(e.target.value)} >
-                {alunos.map((aluno, index) => (
-                <MenuItem key={index} value={aluno}>
-                    {aluno}
-                </MenuItem>
+            <Select value={aluno ? aluno.id : ''} onChange={handleChange}>
+                {alunos.map((aluno) => (
+                    <MenuItem key={aluno.id} value={aluno.id}>
+                        {aluno.nome}
+                    </MenuItem>
                 ))}
             </Select>
 

@@ -14,7 +14,7 @@ export const Barra = () => {
     const navigate = useNavigate();
 
     const vantagem = () => {
-        navigate('/');
+        navigate('/vantagens');
     }
 
     const extrato = () => {

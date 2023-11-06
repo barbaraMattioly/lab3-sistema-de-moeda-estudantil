@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import LDS3.LDS.Model.AlunoModel;
 import LDS3.LDS.Model.EmpresaModel;
+import LDS3.LDS.Model.ProfessorModel;
 import LDS3.LDS.Repository.AlunoRepository;
 import LDS3.LDS.Repository.EmpresaRepository;
+import LDS3.LDS.Repository.ProfessorRepository;
 import LDS3.LDS.Request.LoginRequest;
 import LDS3.LDS.Response.LoginResponse;
 
@@ -28,6 +30,9 @@ public class UsuarioController {
     @Autowired
     private EmpresaRepository empresaRepository;
 
+    @Autowired
+    private ProfessorRepository professorRepository;
+
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
         String email = loginRequest.email();
@@ -35,17 +40,23 @@ public class UsuarioController {
         Optional<AlunoModel> aluno = alunoRepository.findByEmailAndSenha(email, senha);
 
         if (aluno.isPresent()) {
-            LoginResponse response = new LoginResponse(aluno.get(), null, "Aluno");
+            LoginResponse response = new LoginResponse(aluno.get(), null, null, "Aluno");
             return ResponseEntity.ok(response);
         } else {
             Optional<EmpresaModel> empresa = empresaRepository.findByEmailAndSenha(email, senha);
 
             if (empresa.isPresent()) {
-                LoginResponse response = new LoginResponse(null, empresa.get(), "Empresa");
+                LoginResponse response = new LoginResponse(null, empresa.get(), null, "Empresa");
                 return ResponseEntity.ok(response);
             } else {
-                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuário não encontrado! Login ou senha inválidos");
+                Optional<ProfessorModel> professor = professorRepository.findByEmailAndSenha(email, senha);
+                if (professor.isPresent()) {
+                    LoginResponse response = new LoginResponse(null, null, professor.get(), "Professor");
+                    return ResponseEntity.ok(response);
+                } else {
+                    return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuário não encontrado! Login ou senha inválidos");                
+                }                
             }
         }
-    }    
+    }
 }

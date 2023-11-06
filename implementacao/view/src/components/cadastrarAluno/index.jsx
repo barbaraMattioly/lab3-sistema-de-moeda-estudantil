@@ -55,7 +55,7 @@ export const CadastroAluno = () => {
 
     const handleClick2 = async (e) => {
         e.preventDefault();
-        navigate('/login');
+        navigate('/');
     };
 
     return (

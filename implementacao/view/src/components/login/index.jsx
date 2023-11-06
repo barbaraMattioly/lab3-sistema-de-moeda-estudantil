@@ -23,7 +23,7 @@ export const Login = () => {
             console.log(user)
             const response = await useApi.post('usuario/login', user);
             const tipoCadastro = response.data.tipoCadastro;
-            navigate("/")
+            navigate("/vantagens")
           }catch(error){
             alert('Erro ao efetuar login! Verifique os dados')
             console.error('Erro:', error);

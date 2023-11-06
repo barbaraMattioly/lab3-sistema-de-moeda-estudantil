@@ -11,7 +11,7 @@ import jakarta.persistence.JoinColumn;
 
 @Entity
 @Table(name = "PROFESSOR")
-public class ProfessorModel {
+public class ProfessorModel extends UsuarioModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,7 +20,8 @@ public class ProfessorModel {
     private String cpf;
 
     private String departamento;
-    private int qtdMoeadas;
+    private int qtdMoedas;
+    private String nome;
 
     @OneToOne
     @JoinColumn(name = "idInstituicao", referencedColumnName = "id")
@@ -50,12 +51,20 @@ public class ProfessorModel {
         this.departamento = departamento;
     }
 
-    public int getQtdMoeadas() {
-        return qtdMoeadas;
+    public int getqtdMoedas() {
+        return qtdMoedas;
     }
 
-    public void setQtdMoeadas(int qtdMoeadas) {
-        this.qtdMoeadas += qtdMoeadas;
+    public void setqtdMoedas(int qtdMoedas) {
+        this.qtdMoedas = qtdMoedas;
+    }
+
+    public String getNome(){
+        return this.nome;
+    }
+
+    public void setNome(String nome){
+        this.nome = nome;
     }
 
 }
