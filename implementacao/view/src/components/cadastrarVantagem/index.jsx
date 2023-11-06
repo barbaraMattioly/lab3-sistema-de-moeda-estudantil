@@ -39,7 +39,7 @@ export const CadastroVantagem = () => {
     try {
       await useApi.post("vantagem/cadastrar", vantagem);
       alert("Vantagem cadastrada com sucesso!");
-      navigate("/");
+      navigate("/vantagens");
     } catch (error) {
       console.error("Erro:", error);
     }

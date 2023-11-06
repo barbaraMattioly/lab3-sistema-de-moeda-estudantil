@@ -16,9 +16,9 @@ function App() {
        
         <Route path="/aluno/cadastro" element={<CadastroAluno/>}/>
         <Route path="/empresa/cadastro" element={<CadastroEmpresa/>}/>
-        <Route path="/login" element={<Login/>}/>
+        <Route path="/" element={<Login/>}/>
         <Route path="/extrato" element={<Extrato/>}/>
-        <Route path="/" element={<ListaDeVantagens/>}/>
+        <Route path="/vantagens" element={<ListaDeVantagens/>}/>
         <Route path="/teste" element={<Menu/>}/>
         <Route path="/vantagem/cadastro" element={<CadastroVantagem/>}/>
         <Route path="/enviar" element={<Envio/>}/>
