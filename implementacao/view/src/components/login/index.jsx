@@ -6,12 +6,18 @@ import fotoDeFundo from '../../assets/moeda.png';
 import { useState } from 'react'
 import { useApi } from '../../hook/userApi';
 import { useNavigate } from 'react-router-dom';
+import UserSession from "../userSession/UserSession.ts";
 
 export const Login = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const {
+        setUserLogger
+      } = UserSession();
+
+      
     const handleClick = async (e) => {
         e.preventDefault();
         const user ={
@@ -22,8 +28,12 @@ export const Login = () => {
         try{
             console.log(user)
             const response = await useApi.post('usuario/login', user);
-            const tipoCadastro = response.data.tipoCadastro;
-            navigate("/vantagens")
+            if(response.data != ''){
+                setUserLogger(response.data);
+
+                const tipoCadastro = response.data.tipoCadastro;
+                navigate("/vantagens");
+            }
           }catch(error){
             alert('Erro ao efetuar login! Verifique os dados')
             console.error('Erro:', error);
