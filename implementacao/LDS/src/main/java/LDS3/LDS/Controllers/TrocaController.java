@@ -1,30 +1,28 @@
 package LDS3.LDS.Controllers;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import LDS3.LDS.Model.ExtratoModel;
-import LDS3.LDS.Repository.ExtratoRepository;
-
+import LDS3.LDS.Model.TrocaModel;
+import LDS3.LDS.Repository.TrocaRepository;
 
 @RestController
-@RequestMapping("extrato")
+@RequestMapping("troca")
 @CrossOrigin(origins = "http://localhost:5173")
-public class ExtratoController {
+public class TrocaController {
     @Autowired
-    private ExtratoRepository extratoRepository;
-
-    @GetMapping("/listarProfessor/{id}")
-    public Iterable<ExtratoModel> returnAllProfessor(@PathVariable Long id){
-        return extratoRepository.findByProfessor_Id(id);
-    }
+    private TrocaRepository trocaRepository;
 
     @GetMapping("/listarAluno/{id}")
-    public Iterable<ExtratoModel> returnAllAluno(@PathVariable Long id){
-        return extratoRepository.findByAluno_Id(id);
+    public Iterable<TrocaModel> returnAllAluno(@PathVariable Long id){
+        return trocaRepository.findByAluno_Id(id);
     }
+
 }
