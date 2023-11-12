@@ -67,7 +67,7 @@ export const Extrato =  () => {
 
       <Box display="flex" flexDirection="column"  alignItems="center"  justifyContent="center" height="20vh">
           <Typography variant="h4"sx={{marginTop: '90px', marginBottom: '30px'}}>
-            Olá [colocar o nome do prof/aluno aq], seu extrato de transação é:
+            Olá [colocar o nome do usuario aq], seu extrato de transação é:
           </Typography>
         
           <Box sx={{ backgroundColor: '#f0f0f0',  padding: '15px',  borderRadius: '8px',  width: '30%', }} >
