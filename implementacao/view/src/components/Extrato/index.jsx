@@ -3,13 +3,56 @@ import {Barra} from '../navBar/index';
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Transacao from '../Transacao/index';
+import { useApi } from '../../hook/userApi';
+import { useEffect } from 'react';
 
-export const Extrato = () => {
+export const Extrato =  () => {
 
   const transacoes = [
     { nome: 'Profissional 1', tipoTransacao: 'envio'  },
-    { nome: 'Profissional 2', tipoTransacao: 'recebimento'  },
   ];
+
+  const [nome, setNome] = useState('');
+  const [tipoTransacao, setTipoTransacao] = useState('');
+
+  useEffect(() => {
+    const nome = async () => {
+      try {
+        const nomeUsuario = (await useApi.get('extrato/listar')).data;
+        setNome(nomeUsuario);
+        console.log(nomeUsuario);
+      } catch (error) {
+        if (error.response) {
+          console.error("Erro ao buscar vantagem:", error.response.status, error.response.data);
+        } else {
+          console.error("Erro de rede ou servidor indisponível:", error.message);
+        }
+      }
+    };
+    nome();
+  }, []);
+
+  /*
+  try{
+    const [nome, setNome] = useState('');
+    const [tipoTransacao, setTipoTransacao] = useState('');
+
+
+    const dadosUsuario = async () => {
+      const resp = await useApi.get('extrato/listar/'+ JSON.parse(localStorage.getItem('userLogin')).aluno.id);
+      setApiData(data);
+      console.log(resp)
+    }
+
+    useEffect(() => {
+      dadosUsuario();
+    }, [])
+
+  } catch (error) {
+    console.error(error);
+  }*/
+  
+
 
 
   return (
@@ -31,7 +74,7 @@ export const Extrato = () => {
             {transacoes.map((transacao, index) => (
               <Transacao 
                 key={index} 
-                nome={transacao.nomeProf} 
+                nome={transacao.nome} 
                 tipoTransacao={transacao.tipoTransacao}
               />
             ))}
