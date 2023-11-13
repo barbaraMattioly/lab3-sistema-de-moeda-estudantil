@@ -5,6 +5,8 @@ import Button from '@mui/material/Button';
 import logo from '../../assets/logo.png'
 import { useNavigate } from 'react-router-dom';
 import UserSession from '../userSession/UserSession';
+import ExitToApp from '@mui/icons-material/ExitToApp';
+import IconButton from '@mui/material/IconButton';
 
 export const Barra = () => {
     const logoStyle = {
@@ -36,6 +38,10 @@ export const Barra = () => {
       navigate('/vantagem/cadastro');
     }
 
+    const handleSair = () => {
+      removeUserLogger();
+      navigate('/');
+    }
 
     function imputNav(){
       if(getPermission() == "Aluno"){
@@ -77,6 +83,9 @@ export const Barra = () => {
       <Toolbar>
         <img src={logo} className="logo" alt="logo" style={logoStyle}  />
         {imputNav()}
+        <IconButton size="large" edge="end" color="inherit" aria-label="menu" sx={{ mr: 2 }} onClick={handleSair} >
+          <ExitToApp fontSize="medium" />
+        </IconButton>
       </Toolbar>
     </AppBar>
   );

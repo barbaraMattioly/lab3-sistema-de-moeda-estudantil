@@ -32,7 +32,14 @@ export const Login = () => {
                 setUserLogger(response.data);
 
                 const tipoCadastro = response.data.tipoCadastro;
-                navigate("/vantagens");
+                console.log(tipoCadastro);
+
+                if(tipoCadastro === "Professor"){
+                    navigate("/enviar");
+                }else{
+                    navigate("/vantagens");
+                }
+                
             }
           }catch(error){
             alert('Erro ao efetuar login! Verifique os dados')
