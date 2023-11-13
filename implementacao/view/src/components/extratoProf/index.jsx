@@ -4,25 +4,35 @@ import { Barra } from '../navBar/index';
 import { useApi } from '../../hook/userApi';
 
 export const ExtratoProf = () => {
-  const [nomeUsuario, setNomeUsuario] = useState('');
   const [saldo, setSaldo] = useState(0);
-  const [transacoes, setTransacoes] = useState([]);
+  const [doacoes, setDoacoes] = useState([]);
+  const [nomeProfessor, setNomeProfessor] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await useApi.get('extrato/listar');
-        const { nome, saldo, transacoes } = response.data; 
+    const idProfessor = JSON.parse(localStorage.getItem('userLogin')).professor.id
 
-        setNomeUsuario(nome);
-        setSaldo(saldo);
-        setTransacoes(transacoes);
+    const buscarProfessor = async () => {
+      try { 
+        const dadosProfessor = await useApi.get(`professor/${idProfessor}`)
+        setNomeProfessor(dadosProfessor.data.nome)
+        setSaldo(dadosProfessor.data.qtdMoedas)
+      } catch(error){
+        console.log(error)
+      }
+    }
+
+    const buscarDoacoes = async () => {
+      try {
+        const response = await useApi.get(`doacao/listarProfessor/${idProfessor}`);
+        setDoacoes(response.data); 
       } catch (error) {
         console.error('Error fetching data:', error.message);
       }
     };
 
-    fetchData();
+    buscarProfessor();
+    buscarDoacoes();
+
   }, []);
 
   return (
@@ -34,16 +44,16 @@ export const ExtratoProf = () => {
         </Typography>
       </Box>
 
-      <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" height="20vh">
+      <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" height="20vh" sx={{ marginTop: '600px', marginBottom: '30px' }}>
         <Typography variant="h4" sx={{ marginTop: '90px', marginBottom: '30px' }}>
-          Olá {nomeUsuario}, seu extrato de transação é:
+          Olá {nomeProfessor}, seu extrato de transação é:
         </Typography>
 
         <Box sx={{ backgroundColor: '#f0f0f0', padding: '15px', borderRadius: '8px', width: '30%' }}>
-          {transacoes.map((transacao, index) => (
+          {doacoes.map((doacao, index) => (
             <div key={index}>
               <Typography variant="h6" sx={{ marginTop: 1, marginLeft: 1.5 }}>
-                {transacao.tipoTransacao === 'Enviou para'} {transacao.nome} = [] 🪙
+                Enviou para {doacao.aluno.nome} = {doacao.valor} 🪙 | Descrição: {doacao.descricao}
               </Typography>
               <Divider sx={{ marginTop: 2, marginX: 'auto', width: '100%' }} />
             </div>

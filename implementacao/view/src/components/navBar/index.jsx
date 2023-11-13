@@ -26,8 +26,12 @@ export const Barra = () => {
         navigate('/vantagens');
     }
 
-    const extrato = () => {
-      navigate('/extrato');
+    const extratoAluno = () => {
+      navigate('/extrato/aluno');
+    }
+
+    const extratoProfessor = () => {
+      navigate('/extrato/professor');
     }
 
     const enviar = () => {
@@ -48,14 +52,14 @@ export const Barra = () => {
         return (
           <>
             <Button color="inherit" sx={{marginLeft: 'auto'}} onClick={vantagem} >Vantagens</Button>
-            <Button color="inherit"  onClick={extrato}> Extrato</Button>
+            <Button color="inherit"  onClick={extratoAluno}> Extrato</Button>
           </>
         )
       }
       else if(getPermission() == "Professor"){
         return (
           <>
-            <Button color="inherit" sx={{marginLeft: 'auto'}} onClick={extrato}> Extrato</Button>
+            <Button color="inherit" sx={{marginLeft: 'auto'}} onClick={extratoProfessor}> Extrato</Button>
             <Button color="inherit"  onClick={enviar}> Enviar</Button> 
           </>
         )

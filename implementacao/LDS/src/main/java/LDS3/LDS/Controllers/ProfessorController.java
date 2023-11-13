@@ -30,5 +30,10 @@ public class ProfessorController {
         }
 
         return ResponseEntity.status(HttpStatus.OK).body(professor.get().getqtdMoedas());
+    }
+    
+    @GetMapping("/{id}")
+    public Optional<ProfessorModel> returnById(@PathVariable Long id){
+       return professorRepository.findById(id);
     }    
 }

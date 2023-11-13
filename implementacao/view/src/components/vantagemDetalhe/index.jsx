@@ -11,9 +11,15 @@ export const Detalhe = () => {
     const { id } = useParams();
     const [vantagem, setVantagem] = useState([]);
     const [empresa, setEmpresa] = useState('');
+    const [tipoUsuario, setTipoUsuario] = useState('');
+
     const navigate = useNavigate();
 
     useEffect(() => {
+        let usuarioLogado = localStorage.getItem('userLogin');
+        let usuario = JSON.parse(usuarioLogado)
+        setTipoUsuario(usuario.tipoCadastro);
+
         const detalhesVantagem = async () => {
             try {
                 const vantagem = (await useApi.get(`vantagem/listarDetalhes/${id}`)).data;
@@ -28,7 +34,22 @@ export const Detalhe = () => {
 
     const handleClick = async (e) => {
         e.preventDefault();
-        console.log("trocado");
+        const idAluno = JSON.parse(localStorage.getItem('userLogin')).aluno.id
+        
+        const trocaRequest = {
+            idAluno,
+            idVantagem: id
+        }
+
+        console.log(trocaRequest)
+
+        try {
+            await useApi.post('troca/trocarItem', trocaRequest)
+            alert('Item resgatado com sucesso!');
+            navigate('/extrato/aluno');
+        } catch(error) {
+            console.log(error)
+        }
     }
     const handleClickVoltar = async (e) => {
         e.preventDefault();
@@ -63,8 +84,10 @@ export const Detalhe = () => {
                     </Typography>
 
                     <Box style={{ marginTop: '30px', marginLeft: '170px' }}>
-                        <Button variant="contained" onClick={handleClick} sx={{ backgroundColor: '#634f79', color: 'white', '&:hover': { backgroundColor: '#6c5d80' } }}> Resgatar item </Button>
-                    </Box>
+                        {tipoUsuario === 'Aluno' && (
+                            <Button variant="contained" onClick={handleClick} sx={{ backgroundColor: '#634f79', color: 'white', '&:hover': { backgroundColor: '#6c5d80' } }}> Resgatar item </Button>
+                        )}
+                    </Box>             
 
                     <Box style={{ marginTop: '30px', marginLeft: '200px' }}>
                         <Button variant="contained" onClick={handleClickVoltar} sx={{ backgroundColor: '#634f79', color: 'white', '&:hover': { backgroundColor: '#6c5d80' } }}> Voltar </Button>

@@ -51,7 +51,7 @@ export const Envio = () => {
             await useApi.post("doacao/cadastrar", doacao);
 
             alert('moedas enviadas com sucesso!');
-            navigate('/vantagens')
+            navigate('/extrato/professor')
           } catch (error) {
             console.error("Erro:", error);
         }
