@@ -1,5 +1,6 @@
 package LDS3.LDS.Model;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,8 +10,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "DOACAO")
-public class DoacaoModel {
+@Table(name = "Troca") 
+public class TrocaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,11 +21,10 @@ public class DoacaoModel {
     private AlunoModel aluno;
 
     @ManyToOne
-    @JoinColumn(name = "professorId", referencedColumnName = "id")
-    private ProfessorModel professor;
+    @JoinColumn(name = "vantagemId", referencedColumnName = "id")
+    private VantagemModel vantagem;
 
     private int valor;
-    private String descricao;
 
     public Long getId() {
         return this.id;
@@ -40,11 +40,11 @@ public class DoacaoModel {
         this.aluno = alunoModel;
     }
 
-    public ProfessorModel getProfessor(){
-        return this.professor;
+    public VantagemModel getvantagem(){
+        return this.vantagem;
     }
-    public void setProfessor(ProfessorModel professor){
-        this.professor = professor;
+    public void setvantagem(VantagemModel vantagem){
+        this.vantagem = vantagem;
     }
 
     public int getValor(){
@@ -53,12 +53,5 @@ public class DoacaoModel {
     public void setValor(int valor){
         this.valor = valor;
     }
-
-    public String getDescricao(){
-        return this.descricao;
-    }
-    public void setDescricao(String descricao){
-        this.descricao = descricao;
-    }    
 
 }

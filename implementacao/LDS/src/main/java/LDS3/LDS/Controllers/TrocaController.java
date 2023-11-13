@@ -18,7 +18,7 @@ public class ExtratoController {
     @Autowired
     private ExtratoRepository extratoRepository;
 
-    @GetMapping("/listar/{id}")
+    @GetMapping("/listarProfessor/{id}")
     public Iterable<ExtratoModel> returnAllProfessor(@PathVariable Long id){
         return extratoRepository.findByProfessor_Id(id);
     }
