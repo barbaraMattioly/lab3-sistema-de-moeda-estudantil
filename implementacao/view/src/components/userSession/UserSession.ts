@@ -16,7 +16,6 @@ var UserSession = (function() {
 
     var setUserLogger = function(Logged: any){
         localStorage.setItem("userLogin", JSON.stringify(Logged));
-        console.log("logadado: "+localStorage.getItem('userLogin'));
     };
 
     var removeUserLogger = function(){

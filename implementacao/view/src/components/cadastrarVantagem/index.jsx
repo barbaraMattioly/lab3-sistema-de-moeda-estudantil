@@ -17,7 +17,6 @@ import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 export const CadastroVantagem = () => {
   const navigate = useNavigate();
 
-  const [idEmpresa, setIdEmpresa] = useState("");
   const [valor, setValor] = useState("");
   const [descricao, setDescricao] = useState("");
   const [nome, setNome] = useState("");
@@ -26,7 +25,7 @@ export const CadastroVantagem = () => {
   const handleClick = async (e) => {
     e.preventDefault();
 
-    const idEmpresa = 1;
+    const idEmpresa = JSON.parse(localStorage.getItem('userLogin')).empresa.id;
 
     const vantagem = {
       idEmpresa,

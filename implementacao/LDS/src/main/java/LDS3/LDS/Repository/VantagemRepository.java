@@ -8,5 +8,6 @@ import LDS3.LDS.Model.VantagemModel;
 
 @Repository
 public interface VantagemRepository extends JpaRepository<VantagemModel, Long>{
-    
+    public Iterable<VantagemModel> findByEmpresa_Id(Long id);
+
 }

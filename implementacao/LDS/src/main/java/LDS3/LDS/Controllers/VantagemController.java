@@ -63,6 +63,11 @@ public class VantagemController {
     @GetMapping("/listar")
     public Iterable<VantagemModel> getVantagens(){
        return vantagemRepository.findAll();
+    }
+
+    @GetMapping("/listarEmpresa/{idEmpresa}")
+    public Iterable<VantagemModel> vetVantagensEmpresa(@PathVariable Long idEmpresa){
+       return vantagemRepository.findByEmpresa_Id(idEmpresa);
     }    
 
     @GetMapping("/listarDetalhes/{id}")

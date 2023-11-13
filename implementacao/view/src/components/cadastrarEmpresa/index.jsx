@@ -23,7 +23,6 @@ export const CadastroEmpresa = () => {
       email,
       senha,
     };
-    console.log(user);
     
     try{
       await useApi.post('empresa/cadastrar', user);

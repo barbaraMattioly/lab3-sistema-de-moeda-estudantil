@@ -24,6 +24,8 @@ public class TrocaModel {
     @JoinColumn(name = "vantagemId", referencedColumnName = "id")
     private VantagemModel vantagem;
 
+    private String cupom;
+
     private int valor;
 
     public Long getId() {
@@ -43,7 +45,7 @@ public class TrocaModel {
     public VantagemModel getvantagem(){
         return this.vantagem;
     }
-    public void setvantagem(VantagemModel vantagem){
+    public void setVantagem(VantagemModel vantagem){
         this.vantagem = vantagem;
     }
 
@@ -54,4 +56,10 @@ public class TrocaModel {
         this.valor = valor;
     }
 
+    public String getCupom(){
+        return this.cupom;
+    }
+    public void setCupom(String cupom){
+        this.cupom = cupom;
+    }
 }

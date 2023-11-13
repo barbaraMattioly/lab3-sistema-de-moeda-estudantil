@@ -41,7 +41,6 @@ export const CadastroAluno = () => {
             curso, 
             idInstituicao
         };
-        console.log(user);
         
         try{
           await useApi.post('aluno/cadastrar', user);

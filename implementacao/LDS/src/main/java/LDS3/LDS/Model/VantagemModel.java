@@ -21,7 +21,7 @@ public class VantagemModel {
     private EmpresaModel empresa;
 
     private String descricao;
-    private double valor;
+    private int valor;
     private String nome;
     private String urlImagem;
 
@@ -46,10 +46,10 @@ public class VantagemModel {
         this.descricao = descricao;
     }
 
-    public double getValor(){
+    public int getValor(){
         return valor;
     }
-    public void setValor(double valor){
+    public void setValor(int valor){
         this.valor = valor;
     }
 

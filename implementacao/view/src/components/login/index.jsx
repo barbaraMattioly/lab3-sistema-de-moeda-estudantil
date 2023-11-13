@@ -26,7 +26,6 @@ export const Login = () => {
         }
 
         try{
-            console.log(user)
             const response = await useApi.post('usuario/login', user);
             if(response.data != ''){
                 setUserLogger(response.data);

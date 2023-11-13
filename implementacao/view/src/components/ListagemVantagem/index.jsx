@@ -9,11 +9,20 @@ export const ListaDeVantagens = () => {
  const [vantagens, setVantagens] = useState([]);
 
   useEffect(() => {
+    let usuarioLogado = localStorage.getItem('userLogin');
+    let usuario = JSON.parse(usuarioLogado)
+    let tipoUsuario = usuario.tipoCadastro;
+
     const listaVantagens = async () => {
       try {
-        const vantagens = (await useApi.get('vantagem/listar')).data;
+        let vantagens = "";
+        if(tipoUsuario == 'Empresa'){
+          let idEmpresa = usuario.empresa.id;
+          vantagens = (await useApi.get(`vantagem/listarEmpresa/${idEmpresa}`)).data;
+        }else{
+          vantagens = (await useApi.get(`vantagem/listar`)).data;
+        }
         setVantagens(vantagens);
-        console.log(vantagens);
       } catch (error) {
         console.error("Erro ao buscar vantagem:", error); 
       }

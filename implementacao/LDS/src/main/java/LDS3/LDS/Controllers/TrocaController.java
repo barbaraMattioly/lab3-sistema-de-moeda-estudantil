@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import LDS3.LDS.Model.TrocaModel;
 import LDS3.LDS.Repository.TrocaRepository;
+import LDS3.LDS.Request.TrocarItemRequest;
+import LDS3.LDS.Service.TrocaService;
 
 @RestController
 @RequestMapping("troca")
@@ -20,8 +22,16 @@ public class TrocaController {
     @Autowired
     private TrocaRepository trocaRepository;
 
+    @Autowired
+    private TrocaService trocaService;    
+
     @GetMapping("/listarAluno/{id}")
     public Iterable<TrocaModel> listarTrocasAluno(@PathVariable Long id){
         return trocaRepository.findByAluno_Id(id);
+    }
+
+    @PostMapping("trocarItem")
+    public ResponseEntity<?> trocarItem(@RequestBody TrocarItemRequest trocaRequest){
+        return trocaService.trocarItem(trocaRequest);
     }
 }
