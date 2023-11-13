@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { VantagemCard } from '../ListagemVantagens';
 import { useApi } from '../../hook/userApi';
 import {Barra} from '../navBar/index';
-import { Grid, Typography, Box} from '@mui/material';
+import { Grid, Typography, Box, Card} from '@mui/material';
+import { Link } from 'react-router-dom';
 
 export const ListaDeVantagens = () => {
  const [vantagens, setVantagens] = useState([]);
@@ -41,14 +42,19 @@ export const ListaDeVantagens = () => {
     >
       {vantagens.map((vantagem, index) => (
         <Grid item key={vantagem.id} xs={12} sm={6} md={4} lg={3}>
-          <VantagemCard
-            key={index}
-            imagemUrl={vantagem.urlImagem}
-            titulo={vantagem.nome}
-            descricao={vantagem.descricao}
-            custo={vantagem.valor}
-            empresa={vantagem.empresa.nome}
-          />
+
+      <Link to={`/vantagem/${vantagem.id}`}>
+          <Card>
+            <VantagemCard
+              key={index}
+              imagemUrl={vantagem.urlImagem}
+              titulo={vantagem.nome}
+              descricao={vantagem.descricao}
+              custo={vantagem.valor}
+              empresa={vantagem.empresa.nome}
+            />
+          </Card>
+        </Link>
         </Grid>
       ))}
     </Grid>

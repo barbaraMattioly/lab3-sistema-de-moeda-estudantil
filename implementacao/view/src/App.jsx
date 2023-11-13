@@ -10,6 +10,7 @@ import { Menu } from './components/menu';
 import {Envio} from './components/EnvioMoeda';
 import{ExtratoProf} from './components/extratoProf';
 import{ExtratoAluno} from './components/extratoAluno';
+import {Detalhe} from './components/vantagemDetalhe';
 
 function App() {
   return (
@@ -26,9 +27,11 @@ function App() {
         <Route path="/teste" element={<Menu/>}/>
         <Route path="/vantagem/cadastro" element={<CadastroVantagem/>}/>
         <Route path="/enviar" element={<Envio/>}/>
+        <Route path="/vantagem/:id" element={<Detalhe/>}/> 
       </Routes>
     </BrowserRouter>
   )
 }
 
 export default App
+// <Route path="/vantagem/:id" component={DetalhesVantagem} />
