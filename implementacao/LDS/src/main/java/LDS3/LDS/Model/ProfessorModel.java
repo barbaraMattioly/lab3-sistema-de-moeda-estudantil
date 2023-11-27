@@ -56,7 +56,9 @@ public class ProfessorModel extends UsuarioModel {
     }
 
     public void setqtdMoedas(int qtdMoedas) {
-        this.qtdMoedas = qtdMoedas;
+        if (qtdMoedas >= 0){
+            this.qtdMoedas = qtdMoedas;
+        }
     }
 
     public String getNome(){

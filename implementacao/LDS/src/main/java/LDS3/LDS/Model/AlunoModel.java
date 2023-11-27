@@ -73,6 +73,8 @@ public class AlunoModel extends UsuarioModel {
     }
 
     public void setSaldoMoedas(int saldoMoedas) {
-        this.saldoMoedas = saldoMoedas;
+        if (saldoMoedas >= 0){
+            this.saldoMoedas = saldoMoedas;
+        }
     }
 }
