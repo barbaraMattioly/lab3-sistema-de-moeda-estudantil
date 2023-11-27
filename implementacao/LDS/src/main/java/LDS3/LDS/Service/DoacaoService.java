@@ -49,14 +49,15 @@ public class DoacaoService {
 
         doacaoModel.setAluno(aluno.get());
         doacaoModel.setProfessor(professor.get());
-        int qtdMoedas = professor.get().getqtdMoedas() - doacaoRequest.valor();
-        professor.get().setqtdMoedas(qtdMoedas);
+        int saldoMoedasProfessor = professor.get().getqtdMoedas() - doacaoRequest.valor();
+        professor.get().setqtdMoedas(saldoMoedasProfessor);
         professorRepository.save(professor.get());
 
         int saldoMoedasAluno = aluno.get().getSaldoMoedas() + doacaoRequest.valor();
         aluno.get().setSaldoMoedas(saldoMoedasAluno);
         
         DoacaoModel doacaoCadastrada = doacaoRepository.save(doacaoModel);
+        enviarEmailProfessor(doacaoCadastrada.getValor(), professor.get().getEmail(), aluno.get().getNome(), saldoMoedasProfessor);
         enviarEmailAluno(doacaoCadastrada.getValor(), aluno.get().getEmail(), professor.get().getNome(), doacaoCadastrada.getDescricao(), aluno.get().getSaldoMoedas());
         return ResponseEntity.status(HttpStatus.CREATED).body(doacaoCadastrada);  
     }
@@ -74,4 +75,16 @@ public class DoacaoService {
         BeanUtils.copyProperties(emailAlunoRequest, emailModel);
         emailService.enviarEmail(emailModel);
     }
+
+    private void enviarEmailProfessor(int qtdMoedas, String email, String nomeAluno, int saldoMoedas){
+        StringBuilder mensagemEmailProfessor = new StringBuilder();
+        mensagemEmailProfessor.append("Olá! Você acabou de enviar ").append(qtdMoedas).append(" moedas para o(a) aluno(a): ").append(nomeAluno);
+        mensagemEmailProfessor.append(".\nSeu saldo atual é de: ").append(saldoMoedas).append(" moedas.");
+
+        String assunto = "Você enviou moedas";
+        EmailRequest emailProfessorRequest = new EmailRequest(email, mensagemEmailProfessor.toString(), assunto);
+        EmailModel emailModel = new EmailModel();
+        BeanUtils.copyProperties(emailProfessorRequest, emailModel);
+        emailService.enviarEmail(emailModel);
+    }    
 }
