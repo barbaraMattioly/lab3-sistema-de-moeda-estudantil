@@ -32,4 +32,13 @@ public class EmpresaModel extends UsuarioModel{
     }
 
 
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", cnpj='" + getCnpj() + "'" +
+            "}";
+    }
+
+
 }

@@ -75,4 +75,18 @@ public class AlunoModel extends UsuarioModel {
     public void setSaldoMoedas(int saldoMoedas) {
         this.saldoMoedas = saldoMoedas;
     }
+
+
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", cpf='" + getCpf() + "'" +
+            ", rg='" + getRg() + "'" +
+            ", instituicao='" + getInstituicao() + "'" +
+            ", curso='" + getCurso() + "'" +
+            ", saldoMoedas='" + getSaldoMoedas() + "'" +
+            "}";
+    }
+
 }
