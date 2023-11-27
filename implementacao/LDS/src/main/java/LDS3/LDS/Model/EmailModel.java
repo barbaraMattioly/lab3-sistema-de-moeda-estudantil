@@ -25,4 +25,15 @@ public class EmailModel {
     public void setAssunto(String assunto){
         this.assunto = assunto;
     }
+
+
+    @Override
+    public String toString() {
+        return "{" +
+            " destino='" + getDestino() + "'" +
+            ", mensagem='" + getMensagem() + "'" +
+            ", assunto='" + getAssunto() + "'" +
+            "}";
+    }
+
 }
