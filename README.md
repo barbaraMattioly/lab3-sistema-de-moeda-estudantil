@@ -31,3 +31,37 @@ Danilo Boechat Seufitelli
 
 * Como empresa, desejo cadastrar a vantagem com foto e descrição
 
+## Pré-requisitos
+Java JDK (versão X.X ou superior)
+Maven (versão X.X ou superior)
+IDE (opcional)
+
+## Configuração
+Clonar o repositório:
+
+bash
+Copy code
+git clone https://github.com/seu-usuario/nome-do-projeto.git
+
+## Configurações:
+
+Configurar o arquivo application.properties ou application.yml conforme necessário, localizado em src/main/resources.
+Executando o Projeto
+Via linha de comando:
+
+bash
+Copy code
+mvn spring-boot:run
+Via IDE:
+
+Importe o projeto na sua IDE.
+Procure pela classe principal (App.jsx) e execute-a como uma aplicação Java.
+
+## Uso
+Descreva aqui como usar ou testar as funcionalidades do projeto.
+Contribuição
+Faça um fork do repositório.
+Crie uma branch com a sua feature (git checkout -b feature/MinhaFeature).
+Faça commit das suas mudanças (git commit -m 'Adicionando uma funcionalidade incrível').
+Faça push para a branch (git push origin feature/MinhaFeature).
+Abra um Pull Request.
